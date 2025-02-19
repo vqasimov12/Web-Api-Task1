@@ -2,8 +2,7 @@
 
 public record UpdateShipperDTO
 {
-    public int ShipperId { get; set; }
-    public string ShipperName { get; }
+    public string ShipperName { get; set; }
     public string Phone { get; set; }
 
 }

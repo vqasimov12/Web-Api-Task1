@@ -22,7 +22,7 @@ public class ShipperService(IShipperRepository repository) : IShipperService
 
     public List<Shipper> GetAll() => [.. _repository.GetAll()];
 
-    public Shipper GetShipper(int id)=>_repository.Get(id);
+    public Shipper GetShipper(int id) => _repository.Get(id);
 
     public bool RemoveShipper(int id)
     {
@@ -30,9 +30,11 @@ public class ShipperService(IShipperRepository repository) : IShipperService
         return true;
     }
 
-    public bool Update(UpdateShipperDTO shipper)
+    public bool Update(UpdateShipperDTO shipper, int id)
     {
-        var currentShipper = _repository.Get(shipper.ShipperId);
+        var currentShipper = _repository.Get(id);
+        if (currentShipper is null)
+            return false;
         currentShipper.Phone = shipper.Phone;
         currentShipper.CompanyName = shipper.ShipperName;
         _repository.Update(currentShipper);

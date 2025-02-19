@@ -9,5 +9,5 @@ public interface IShipperService
     bool RemoveShipper(int id);
     Shipper GetShipper(int id);
     List<Shipper> GetAll();
-    bool Update(UpdateShipperDTO shipper);
+    bool Update(UpdateShipperDTO shipper,int id);
 }

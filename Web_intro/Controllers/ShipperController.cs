@@ -17,9 +17,11 @@ public class ShipperController(IShipperService shipperService) : ControllerBase
     public IActionResult Get(int id) => Ok(_shipperService.GetShipper(id));
 
     [HttpDelete]
-    public IActionResult Delete([FromQuery] int id) => Ok(_shipperService.RemoveShipper(id));
+    public void Delete([FromQuery] int id) => Ok(_shipperService.RemoveShipper(id));
 
     [HttpPost]
     public IActionResult Add([FromBody] AddShipperDTO addShipper) => Ok(_shipperService.AddShipper(addShipper));
 
+    [HttpPut("{id}")]
+    public void Update([FromBody] UpdateShipperDTO updateShipper, int id) => Ok(_shipperService.Update(updateShipper,id));
 }
